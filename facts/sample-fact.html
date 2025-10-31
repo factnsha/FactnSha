@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ocean's Hidden Giants - FactnSha</title>
+    <link rel="stylesheet" href="/css/fact.css">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="/index.html" class="nav-logo">
+                <img src="/img/factnsha logo.jpg" alt="FactnSha Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/facts.html">All Facts</a></li>
+                <li><a href="https://aakanshasingh769.github.io/AakanshaSingh/">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="fact-container">
+        <!-- FACT HEADER -->
+        <div class="fact-header">
+            <h1 class="fact-title">🌊 The Ocean's Hidden Giants</h1>
+            <div class="fact-meta">
+                <span>📅 October 29, 2025</span>
+                <span>⏱️ 3 min read</span>
+                <span>🔥 Mind-Blowing</span>
+            </div>
+        </div>
+
+        <!-- FACT IMAGE -->
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=900&h=600&fit=crop" alt="Ocean Giants" class="fact-image">
+
+        <!-- FACT CONTENT -->
+        <div class="fact-content">
+            <p>
+                Did you know that the largest living structure on Earth is not a giant redwood tree or a massive coral reef... 
+                but a single organism that stretches for miles beneath the ocean floor?
+            </p>
+
+            <h2>The Astonishing Discovery</h2>
+            <p>
+                Scientists recently discovered that a single specimen of honey fungus (Armillaria ostoyae) in the Blue Mountains 
+                of Oregon covers an area of 2,385 acres and is estimated to be between 2,400 and 8,650 years old! This makes 
+                it not only the largest living organism but also one of the oldest.
+            </p>
+
+            <div class="highlight-box">
+                <strong>🤯 Mind-Blowing Fact:</strong> This organism is so large that if you walked from one end to the other, 
+                it would take you several hours!
+            </div>
+
+            <h2>How Does It Survive?</h2>
+            <p>
+                The fungus spreads through underground root-like structures called rhizomorphs, which can extend for miles. 
+                It feeds on tree roots and can kill entire forests over time. Here's what makes it incredible:
+            </p>
+
+            <ul>
+                <li>Covers an area larger than 1,600 football fields</li>
+                <li>Weighs an estimated 605 tons - heavier than a blue whale!</li>
+                <li>Has survived ice ages, droughts, and forest fires</li>
+                <li>Can live for thousands of years without showing signs of aging</li>
+            </ul>
+
+            <p>
+                This discovery challenges everything we thought we knew about life on Earth. While we often think of 
+                giant whales or towering trees as the largest living things, the real giants are hiding beneath our feet!
+            </p>
+        </div>
+
+        <!-- VIDEO SECTION -->
+        <div class="video-section">
+            <h2>📺 Watch Our YouTube Short</h2>
+            <div class="video-container">
+                <!-- REPLACE THIS URL WITH YOUR ACTUAL YOUTUBE SHORTS EMBED URL -->
+                <iframe 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- SHARE SECTION -->
+        <div class="share-section">
+            <h3>✨ Enjoyed This Fact?</h3>
+            <div class="share-buttons">
+                <a href="https://instagram.com/factsnha" target="_blank" class="share-btn share-instagram">
+                    📸 Follow on Instagram
+                </a>
+                <a href="https://youtube.com/@factsnha" target="_blank" class="share-btn share-youtube">
+                    ▶️ Subscribe on YouTube
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3>FactnSha</h3>
+        <p>Your daily dose of mind-blowing facts and unique news</p>
+        <div class="social-links">
+            <a href="https://instagram.com/factsnha" target="_blank">📸</a>
+            <a href="https://youtube.com/@factsnha" target="_blank">▶️</a>
+        </div>
+        <p style="margin-top: 20px; opacity: 0.7;">© 2025 FactnSha. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        createStars();
+    </script>
+</body>
+</html>
