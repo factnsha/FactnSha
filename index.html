@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FactnSha - Mind-Blowing Facts, Science, Technology & Daily Life News</title>
+
+    <!-- ✅ Primary Meta Tags -->
+    <meta name="title" content="FactnSha - Mind-Blowing Facts, Science, Technology & Health News">
+    <meta name="description" content="Explore daily mind-blowing facts about science, technology, health, and the world around you. FactnSha brings fascinating truths, interesting facts, and viral stories to expand your knowledge.">
+    <meta name="keywords" content="facts, science facts, technology facts, health facts, interesting facts, mind blowing facts, daily facts, viral facts, fun facts, FactnSha">
+    <meta name="author" content="FactnSha Team">
+
+    <!-- ✅ Open Graph / Facebook -->
+    <meta property="og:title" content="FactnSha - Mind-Blowing Facts, Science & Technology News">
+    <meta property="og:description" content="Discover amazing facts and unique stories that educate, entertain, and inspire you. Join FactnSha for daily interesting and mind-blowing content.">
+    <meta property="og:image" content="https://yourdomain.com/images/factnsha-logo.jpg">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:type" content="website">
+
+    <!-- ✅ Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FactnSha - Mind-Blowing Facts, Science & Technology News">
+    <meta name="twitter:description" content="Your daily source for fascinating facts and trending news from science, tech, and health.">
+    <meta name="twitter:image" content="https://yourdomain.com/images/factnsha-logo.jpg">
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- ✅ CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/factnsha logo.ico" type="image/x-icon">
+
+    <!-- ✅ Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com/">
+
+    <!-- ✅ Schema Markup for Better SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Website",
+      "name": "FactnSha",
+      "url": "https://yourdomain.com",
+      "description": "FactnSha delivers daily mind-blowing and interesting facts about science, technology, and health.",
+      "sameAs": [
+        "https://instagram.com/factnsha",
+        "https://youtube.com/@factnsha"
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <div class="stars" id="stars"></div>
+
+    <!-- ✅ Navigation Section -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" title="FactnSha Home - Mind Blowing Facts">
+                <img src="img/factnsha logo.jpg" alt="FactnSha Logo - Daily Mind-Blowing Facts">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" title="FactnSha Home">Home</a></li>
+                <li><a href="facts.html" title="Explore All Facts on FactnSha">All Facts</a></li>
+                <li><a href="#about" title="About FactnSha">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ✅ Home Page Content -->
+    <main id="homePage">
+        <section class="hero">
+            <div class="logo-placeholder" aria-label="Brain Icon for Knowledge and Facts">
+                🧠
+            </div>
+            <h1>Welcome to <span style="color:#ffd700;">FactnSha</span></h1>
+            <p>
+                Discover the most mind-blowing facts, incredible truths, and fascinating news 
+                that will change the way you see the world. Every day, we bring you unique 
+                content that educates, entertains, and amazes! Explore facts about science, technology, health, and daily life.
+            </p>
+            <a href="facts.html" class="cta-button" title="Explore Interesting Facts on FactnSha">Explore Facts 🚀</a>
+        </section>
+
+        <section class="features">
+            <article class="feature-card">
+                <div class="feature-icon" aria-hidden="true">🌟</div>
+                <h2>Mind-Blowing Facts</h2>
+                <p>Uncover incredible truths and fascinating information about science, space, technology, and life that will leave you amazed every single day.</p>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon" aria-hidden="true">📰</div>
+                <h2>Latest News</h2>
+                <p>Stay updated with the most interesting, trending, and unique news from around the world — curated just for curious minds.</p>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon" aria-hidden="true">🎥</div>
+                <h2>Video Content</h2>
+                <p>Watch our engaging YouTube Shorts that bring real-world facts to life with visuals and narration that make learning fun.</p>
+            </article>
+        </section>
+    </main>
+
+    <!-- ✅ Footer -->
+    <footer id="about">
+        <h3>About FactnSha</h3>
+        <p>FactnSha is your daily source of mind-blowing facts and amazing truths about science, technology, health, and life.</p>
+        <div class="social-links">
+            <a href="https://instagram.com/factnsha" target="_blank" rel="noopener" title="Follow FactnSha on Instagram">📸</a>
+            <a href="https://youtube.com/@factnsha" target="_blank" rel="noopener" title="Subscribe to FactnSha on YouTube">▶️</a>
+        </div>
+        <p style="margin-top: 20px; opacity: 0.7;">© 2025 FactnSha. All rights reserved.</p>
+    </footer>
+
+    <!-- ✅ Background Stars Animation Script -->
+    <script>
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>

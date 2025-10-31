@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Facts - FactnSha</title>
+    <link rel="stylesheet" href="css/factscss.css">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="img/factnsha logo.jpg" alt="FactnSha Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="facts.html">All Facts</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li id="loginBtn" style="display: block;">
+                    <a onclick="showLoginModal()" class="login-btn">🔐 Admin Login</a>
+                </li>
+                <li id="logoutBtn" style="display: none;">
+                    <a onclick="logout()" class="logout-btn">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>🌟 Explore Mind-Blowing Facts</h1>
+        <p>Discover our collection of incredible facts that will change the way you see the world</p>
+    </div>
+
+    <div class="container">
+        <div class="facts-grid" id="factsGrid"></div>
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <h2>✨ No Facts Yet ✨</h2>
+            <p>Click the "Add Listing" button to add your first mind-blowing fact!</p>
+        </div>
+    </div>
+
+    <button class="add-btn" id="addBtn" onclick="openModal()">➕ Add Listing</button>
+
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+            <h2>🔐 Admin Login</h2>
+            <div class="login-error" id="loginError">Invalid credentials!</div>
+            <form id="loginForm" onsubmit="login(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h2>Add New Fact</h2>
+            <form id="factForm" onsubmit="addFact(event)">
+                <div class="form-group">
+                    <label>Fact Title *</label>
+                    <input type="text" id="factTitle" required placeholder="Enter fact title">
+                </div>
+
+                <div class="form-group">
+                    <label>Page Link (URL) *</label>
+                    <input type="text" id="factLink" required placeholder="e.g., fact-ocean-giants.html">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date *</label>
+                        <input type="date" id="factDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Read Time (min) *</label>
+                        <input type="number" id="readTime" required placeholder="e.g., 3" min="1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Image URL *</label>
+                    <input type="url" id="imageUrl" required placeholder="https://example.com/image.jpg">
+                </div>
+
+                <div class="form-group">
+                    <label>Short Excerpt *</label>
+                    <textarea id="excerpt" required placeholder="Write a brief description (150 chars max)" maxlength="150"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Tag *</label>
+                        <select id="factTag" required>
+                            <option value="">Select a tag</option>
+                            <option value="new">🔥 New</option>
+                            <option value="trending">📈 Trending</option>
+                            <option value="popular">⭐ Popular</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="factCategory" required>
+                            <option value="">Select a category</option>
+                            <option value="science">🔬 Science</option>
+                            <option value="technology">💻 Technology</option>
+                            <option value="unique">✨ Unique</option>
+                            <option value="history">📚 History</option>
+                            <option value="nature">🌿 Nature</option>
+                            <option value="space">🚀 Space</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="hasVideo" style="width: auto; margin-right: 10px;">
+                        Has YouTube Video?
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">🚀 Add Fact</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <h3>FactnSha</h3>
+        <p>Your daily dose of mind-blowing facts and unique news</p>
+        <div class="social-links">
+            <a href="https://instagram.com/factsnha" target="_blank">📸</a>
+            <a href="https://youtube.com/@factsnha" target="_blank">▶️</a>
+        </div>
+        <p style="margin-top: 20px; opacity: 0.7;">© 2025 FactnSha. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const ADMIN_USERNAME = 'aakansha2712';
+        const ADMIN_PASSWORD = 'Aakansha@2712';
+
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function checkAuth() {
+            const isLoggedIn = sessionStorage.getItem('adminLoggedIn');
+            if (isLoggedIn === 'true') {
+                document.getElementById('loginBtn').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('addBtn').classList.add('show');
+            } else {
+                document.getElementById('loginBtn').style.display = 'block';
+                document.getElementById('logoutBtn').style.display = 'none';
+                document.getElementById('addBtn').classList.remove('show');
+            }
+        }
+
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+            document.getElementById('loginError').classList.remove('show');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('loginForm').reset();
+            document.getElementById('loginError').classList.remove('show');
+        }
+
+        function login(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                closeLoginModal();
+                checkAuth();
+                loadFacts();
+            } else {
+                document.getElementById('loginError').classList.add('show');
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            checkAuth();
+            loadFacts();
+        }
+
+        function openModal() {
+            document.getElementById('addModal').classList.add('active');
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('factDate').value = today;
+        }
+
+        function closeModal() {
+            document.getElementById('addModal').classList.remove('active');
+            document.getElementById('factForm').reset();
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function getTagEmoji(tag) {
+            if (!tag) return '🔥';
+            const tagEmojis = {
+                'new': '🔥',
+                'trending': '📈',
+                'popular': '⭐'
+            };
+            return tagEmojis[tag] || '✨';
+        }
+
+        function getTagLabel(tag) {
+            if (!tag) return 'NEW';
+            const tagLabels = {
+                'new': 'NEW',
+                'trending': 'TRENDING',
+                'popular': 'POPULAR'
+            };
+            return tagLabels[tag] || tag.toUpperCase();
+        }
+
+        function getCategoryEmoji(category) {
+            if (!category) return '✨';
+            const categoryEmojis = {
+                'science': '🔬',
+                'technology': '💻',
+                'unique': '✨',
+                'history': '📚',
+                'nature': '🌿',
+                'space': '🚀'
+            };
+            return categoryEmojis[category] || '📌';
+        }
+
+        function getCategoryLabel(category) {
+            if (!category) return 'Unique';
+            return category.charAt(0).toUpperCase() + category.slice(1);
+        }
+
+        function addFact(event) {
+            event.preventDefault();
+
+            const factId = Date.now();
+            const fact = {
+                id: factId,
+                title: document.getElementById('factTitle').value,
+                link: document.getElementById('factLink').value,
+                date: formatDate(document.getElementById('factDate').value),
+                readTime: document.getElementById('readTime').value,
+                image: document.getElementById('imageUrl').value,
+                excerpt: document.getElementById('excerpt').value,
+                tag: document.getElementById('factTag').value || 'new',
+                category: document.getElementById('factCategory').value || 'unique',
+                hasVideo: document.getElementById('hasVideo').checked,
+                timestamp: factId
+            };
+
+            let facts = JSON.parse(localStorage.getItem('factsnha_facts') || '[]');
+            
+            // Ensure all existing facts have IDs (migration for old data)
+            facts = facts.map((f, idx) => {
+                if (!f.id) {
+                    f.id = f.timestamp || (Date.now() - (facts.length - idx) * 1000);
+                }
+                return f;
+            });
+            
+            facts.unshift(fact);
+            localStorage.setItem('factsnha_facts', JSON.stringify(facts));
+
+            closeModal();
+            loadFacts();
+        }
+
+        function deleteFact(id, event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            if (confirm('Are you sure you want to delete this fact?')) {
+                let facts = JSON.parse(localStorage.getItem('factsnha_facts') || '[]');
+                facts = facts.filter(fact => fact.id !== id);
+                localStorage.setItem('factsnha_facts', JSON.stringify(facts));
+                loadFacts();
+            }
+        }
+
+        function loadFacts() {
+            let facts = JSON.parse(localStorage.getItem('factsnha_facts') || '[]');
+            const grid = document.getElementById('factsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const isLoggedIn = sessionStorage.getItem('adminLoggedIn') === 'true';
+
+            // Ensure all facts have proper IDs (migration for old data)
+            let needsUpdate = false;
+            facts = facts.map((fact, idx) => {
+                if (!fact.id) {
+                    fact.id = fact.timestamp || (Date.now() - (facts.length - idx) * 1000);
+                    needsUpdate = true;
+                }
+                return fact;
+            });
+
+            // Save updated facts if IDs were added
+            if (needsUpdate) {
+                localStorage.setItem('factsnha_facts', JSON.stringify(facts));
+            }
+
+            if (facts.length === 0) {
+                grid.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            grid.innerHTML = facts.map((fact, index) => {
+                // Set default values for old facts without tag/category
+                const factTag = fact.tag || 'new';
+                const factCategory = fact.category || 'unique';
+                
+                return `
+                <a href="${fact.link}" class="fact-card" style="animation-delay: ${index * 0.1}s; transform: translateY(20px);">
+                    ${isLoggedIn ? `
+                        <button class="delete-btn show" onclick="deleteFact(${fact.id}, event)" title="Delete this fact">
+                            🗑️
+                        </button>
+                    ` : ''}
+                    <div class="fact-image-container">
+                        <img src="${fact.image}" alt="${fact.title}" class="fact-image" onerror="this.src='https://via.placeholder.com/400x250/1a2332/ff6b35?text=FactnSha'">
+                        <div class="fact-badge">${getTagEmoji(factTag)} ${getTagLabel(factTag)}</div>
+                    </div>
+                    <div class="fact-content">
+                        <div class="fact-date">📅 ${fact.date}</div>
+                        <div class="fact-title">${fact.title}</div>
+                        <div class="fact-excerpt">${fact.excerpt}</div>
+                        <div class="tag-badges">
+                            <span class="category-badge">${getCategoryEmoji(factCategory)} ${getCategoryLabel(factCategory)}</span>
+                        </div>
+                        <div class="fact-meta">
+                            <span>⏱️ ${fact.readTime} min read</span>
+                            ${fact.hasVideo ? '<span style="color: #ff6b6b;">▶️ Video Available</span>' : ''}
+                        </div>
+                    </div>
+                </a>
+            `;
+            }).join('');
+        }
+
+        // Initialize
+        createStars();
+        checkAuth();
+        loadFacts();
+    </script>
+</body>
+</html>
